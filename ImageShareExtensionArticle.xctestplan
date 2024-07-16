@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "4159916A-D1A6-4A18-9797-AC1BB393EE56",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ImageShareExtensionArticle.xcodeproj",
+      "identifier" : "84C88BC72C3F19B000384CBC",
+      "name" : "ImageShareExtensionArticle"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ImageShareExtensionArticle.xcodeproj",
+        "identifier" : "84C88BD72C3F19B300384CBC",
+        "name" : "ImageShareExtensionArticleTests"
+      }
+    }
+  ],
+  "version" : 1
+}

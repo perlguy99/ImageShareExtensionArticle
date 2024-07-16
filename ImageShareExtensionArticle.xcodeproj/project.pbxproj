@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -14,25 +14,17 @@
 			remoteGlobalIDString = 84C88BC72C3F19B000384CBC;
 			remoteInfo = ImageShareExtensionArticle;
 		};
-		84C88BE32C3F19B300384CBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84C88BC02C3F19B000384CBC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 84C88BC72C3F19B000384CBC;
-			remoteInfo = ImageShareExtensionArticle;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		844317BC2C46FAEB00A436F4 /* ImageShareExtensionArticle.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageShareExtensionArticle.xctestplan; sourceTree = "<group>"; };
 		84C88BC82C3F19B000384CBC /* ImageShareExtensionArticle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageShareExtensionArticle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C88BD82C3F19B300384CBC /* ImageShareExtensionArticleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageShareExtensionArticleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84C88BE22C3F19B300384CBC /* ImageShareExtensionArticleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageShareExtensionArticleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		84C88BCA2C3F19B000384CBC /* ImageShareExtensionArticle */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ImageShareExtensionArticle; sourceTree = "<group>"; };
 		84C88BDB2C3F19B300384CBC /* ImageShareExtensionArticleTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ImageShareExtensionArticleTests; sourceTree = "<group>"; };
-		84C88BE52C3F19B300384CBC /* ImageShareExtensionArticleUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = ImageShareExtensionArticleUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,22 +42,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84C88BDF2C3F19B300384CBC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		84C88BBF2C3F19B000384CBC = {
 			isa = PBXGroup;
 			children = (
+				844317BC2C46FAEB00A436F4 /* ImageShareExtensionArticle.xctestplan */,
 				84C88BCA2C3F19B000384CBC /* ImageShareExtensionArticle */,
 				84C88BDB2C3F19B300384CBC /* ImageShareExtensionArticleTests */,
-				84C88BE52C3F19B300384CBC /* ImageShareExtensionArticleUITests */,
 				84C88BC92C3F19B000384CBC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +60,6 @@
 			children = (
 				84C88BC82C3F19B000384CBC /* ImageShareExtensionArticle.app */,
 				84C88BD82C3F19B300384CBC /* ImageShareExtensionArticleTests.xctest */,
-				84C88BE22C3F19B300384CBC /* ImageShareExtensionArticleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,29 +112,6 @@
 			productReference = 84C88BD82C3F19B300384CBC /* ImageShareExtensionArticleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		84C88BE12C3F19B300384CBC /* ImageShareExtensionArticleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 84C88BF22C3F19B300384CBC /* Build configuration list for PBXNativeTarget "ImageShareExtensionArticleUITests" */;
-			buildPhases = (
-				84C88BDE2C3F19B300384CBC /* Sources */,
-				84C88BDF2C3F19B300384CBC /* Frameworks */,
-				84C88BE02C3F19B300384CBC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				84C88BE42C3F19B300384CBC /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				84C88BE52C3F19B300384CBC /* ImageShareExtensionArticleUITests */,
-			);
-			name = ImageShareExtensionArticleUITests;
-			packageProductDependencies = (
-			);
-			productName = ImageShareExtensionArticleUITests;
-			productReference = 84C88BE22C3F19B300384CBC /* ImageShareExtensionArticleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -165,10 +126,6 @@
 						CreatedOnToolsVersion = 16.0;
 					};
 					84C88BD72C3F19B300384CBC = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = 84C88BC72C3F19B000384CBC;
-					};
-					84C88BE12C3F19B300384CBC = {
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 84C88BC72C3F19B000384CBC;
 					};
@@ -189,7 +146,6 @@
 			targets = (
 				84C88BC72C3F19B000384CBC /* ImageShareExtensionArticle */,
 				84C88BD72C3F19B300384CBC /* ImageShareExtensionArticleTests */,
-				84C88BE12C3F19B300384CBC /* ImageShareExtensionArticleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -203,13 +159,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		84C88BD62C3F19B300384CBC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		84C88BE02C3F19B300384CBC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -233,13 +182,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84C88BDE2C3F19B300384CBC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -247,11 +189,6 @@
 			isa = PBXTargetDependency;
 			target = 84C88BC72C3F19B000384CBC /* ImageShareExtensionArticle */;
 			targetProxy = 84C88BD92C3F19B300384CBC /* PBXContainerItemProxy */;
-		};
-		84C88BE42C3F19B300384CBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 84C88BC72C3F19B000384CBC /* ImageShareExtensionArticle */;
-			targetProxy = 84C88BE32C3F19B300384CBC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -471,40 +408,6 @@
 			};
 			name = Release;
 		};
-		84C88BF32C3F19B300384CBC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 833AT2F722;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.perlguy.ImageShareExtensionArticleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ImageShareExtensionArticle;
-			};
-			name = Debug;
-		};
-		84C88BF42C3F19B300384CBC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 833AT2F722;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.perlguy.ImageShareExtensionArticleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ImageShareExtensionArticle;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -531,15 +434,6 @@
 			buildConfigurations = (
 				84C88BF02C3F19B300384CBC /* Debug */,
 				84C88BF12C3F19B300384CBC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		84C88BF22C3F19B300384CBC /* Build configuration list for PBXNativeTarget "ImageShareExtensionArticleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				84C88BF32C3F19B300384CBC /* Debug */,
-				84C88BF42C3F19B300384CBC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
