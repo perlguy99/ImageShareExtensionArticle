@@ -15,7 +15,32 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         XCTAssertNoThrow(CustomSharedImage(image: testImage, title: "" ))
     }
     
-    
+    func testSaveAndRetrieveCustomSharedImage() {
+        // Create a CustomSharedImage instance
+        let originalImage = UIImage(systemName: "star.fill")!
+        let originalTitle = "Test Image"
+        let originalCustomSharedImage = CustomSharedImage(image: originalImage, title: originalTitle)
+        
+        // Our key for userDefaults
+        let key = "testCustomSharedImage"
+        
+        // Save to UserDefaults
+        let defaults = UserDefaults.standard
+        if let encoded = try? JSONEncoder().encode(originalCustomSharedImage) {
+            defaults.set(encoded, forKey: key)
+        }
+        
+        // Retrieve from UserDefaults
+        guard let savedData = defaults.data(forKey: key),
+              let retrievedCustomSharedImage = try? JSONDecoder().decode(CustomSharedImage.self, from: savedData) else {
+            XCTFail("Failed to retrieve CustomSharedImage from UserDefaults")
+            return
+        }
+        
+        // Assert that the retrieved CustomSharedImage matches the original
+        XCTAssertEqual(originalCustomSharedImage.title, retrievedCustomSharedImage.title, "Titles do not match")
+        XCTAssertEqual(originalCustomSharedImage.image.pngData()?.count, retrievedCustomSharedImage.image.pngData()?.count, "Images do no match")
+    }
 }
 
 
