@@ -10,15 +10,17 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            CustomSharedImageView(
+                customSharedImage: CustomSharedImage(
+                    image: UIImage(named: "f35")!,
+                    title: "F-35 Title"
+                )
+            )
+            .border(.gray, width: 2)
         }
         .padding()
     }
 }
-
 
 #Preview {
     ContentView()

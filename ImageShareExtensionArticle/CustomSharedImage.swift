@@ -8,6 +8,6 @@
 import SwiftUI
 
 struct CustomSharedImage {
-    var image: Image
+    var image: UIImage
     var title: String
 }

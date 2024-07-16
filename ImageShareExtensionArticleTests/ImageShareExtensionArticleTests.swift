@@ -10,19 +10,13 @@ import SwiftUI
 @testable import ImageShareExtensionArticle
 
 final class ImageShareExtensionArticleTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
+    override func setUpWithError() throws { }
     override func tearDownWithError() throws { }
 
     func testCreateCustomSharedImage() throws {
-        let foo = Image(systemName: "gear")
+        let testImage = UIImage(systemName: "gear")!
         
-        XCTAssertNoThrow(CustomSharedImage(image: Image(systemName: "gear"), title: "" ))
-
+        XCTAssertNoThrow(CustomSharedImage(image: testImage, title: "" ))
     }
-
 
 }
