@@ -26,9 +26,10 @@ struct CustomSharedImageView: View {
 }
 
 #Preview {
-    let testImage = UIImage(systemName: "graduationcap.circle.fill")!
-    let testTitle = "Test Image"
-    let testSharedImage = CustomSharedImage(image: testImage, title: testTitle)
+    let testSharedImage = CustomSharedImage(
+        image: UIImage(systemName: "graduationcap.circle.fill")!,
+        title: "Test Preview Image"
+    )
     
     CustomSharedImageView(customSharedImage: testSharedImage)
         .border(.gray, width: 2)
