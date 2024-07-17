@@ -108,27 +108,52 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         // Verify no data yet
         XCTAssertNil(defaults.data(forKey: key))
         
+        // Verify that sut contains a SharedObject
         XCTAssertNotNil(sut.getSharedObject)
+        
+        // Save the object
+        sut.saveObject()
+        
+        // Verify we have data
+        XCTAssertNotNil(defaults.data(forKey: key))
+        
+        // Clear the currentSharedObject from the sut
+        sut.currentSharedObject = nil
+        
+        XCTAssertNil(sut.currentSharedObject)
+        
+        // Load the object
+        sut.loadSavedObject()
+        
+        guard let loadedObject = sut.currentSharedObject else {
+            XCTFail("No loadedObject found")
+            return
+        }
+        
+        // Verify we get the correct data...
+        XCTAssertEqual(loadedObject.title, defaultSharedObject.title)
+        XCTAssertEqual(loadedObject.image.pngData()?.count, defaultSharedObject.image.pngData()?.count, "Images do no match")
     }
 
+    func testSharedObjectManagerReturnsDefaultIfNoSaved() {
+        let defaultSharedObject = SharedObject(image: UIImage(systemName: "snowflake")!, title: "Default Title X")
+        let sut = SharedObjectManager()
+        
+        // Verify no data yet
+        XCTAssertNil(defaults.data(forKey: key))
+        
+        // Verify that sut contains a SharedObject
+        guard let sutSharedObject = sut.getSharedObject() else {
+            XCTFail("No sharedObject found")
+            return
+        }
+        
+        XCTAssertNotNil(sutSharedObject)
+
+        // Verify we get the correct data...
+        XCTAssertEqual(sutSharedObject.title, defaultSharedObject.title)
+        XCTAssertEqual(sutSharedObject.image.pngData()?.count, defaultSharedObject.image.pngData()?.count, "Images do no match")
+    }
     
 
 }
-
-
-//            // We didn't find any data for that key
-//            let originalImage = UIImage(systemName: "flag.checkered")!
-//            let originalTitle = "Checkered Flag Default"
-//            let originalSharedObject = SharedObject(image: originalImage, title: originalTitle)
-
-
-
-//        guard let savedData = defaults.data(forKey: key),
-//              let retrievedSharedObject = try? JSONDecoder().decode(SharedObject.self, from: savedData) else {
-//            XCTFail("Failed to retrieve SharedObject from UserDefaults")
-//            return
-//        }
-
-        
-        
-//        let myCustomSharedImage: SharedObject = defaults.data(forKey: key)

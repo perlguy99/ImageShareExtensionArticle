@@ -8,6 +8,8 @@
 import SwiftUI
 
 class SharedObjectManager {
+    let key = "testSharedObject"
+    let defaults = UserDefaults.standard
     var currentSharedObject: SharedObject?
     
     init(currentSharedObject: SharedObject? = nil) {
@@ -15,15 +17,32 @@ class SharedObjectManager {
     }
     
     func getSharedObject() -> SharedObject? {
-        
         if currentSharedObject == nil {
-            print("\n-------------currentSharedObject == nil-----------------\n")
-            
-            let defaultSharedObject = SharedObject(image: UIImage(named: "snowflake")!, title: "Default Title X")
+            let defaultSharedObject = SharedObject(image: UIImage(systemName: "snowflake")!, title: "Default Title X")
             
             currentSharedObject = defaultSharedObject
         }
         
         return currentSharedObject
+    }
+    
+    func saveObject() {
+        // Save to UserDefaults
+        if let encoded = try? JSONEncoder().encode(currentSharedObject)
+        {
+            defaults.set(encoded, forKey: key)
+        }
+    }
+    
+    func loadSavedObject() {
+        // Retrieve from UserDefaults
+        guard let savedData = defaults.data(forKey: key),
+              let savedSharedObject = try? JSONDecoder().decode(
+                SharedObject.self, from: savedData
+              ) else {
+            return
+        }
+
+        currentSharedObject = savedSharedObject
     }
 }
