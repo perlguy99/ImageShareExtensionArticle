@@ -47,30 +47,13 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         XCTAssertEqual(testSharedObject.image.pngData()?.count, savedSharedObject.image.pngData()?.count, "Images do no match")
     }
     
-    func testGetSavedObjectOrDefaultObject_expectDefault_v1() {
+    func testGetSavedObjectOrDefaultObject_expectDefault() {
         // Retrieve from UserDefaults
         if let _ = defaults.data(forKey: key) {
             // We found some data
             XCTFail("Should not have found data")
         } else {
             XCTAssertTrue(true, "If we get here, that would be a default")
-        }
-    }
-
-    func testGetSavedObjectOrDefaultObject_expectDefault_v2() {
-        // Retrieve from UserDefaults
-        if let sut = defaults.data(forKey: key) {
-            // We found some data
-            XCTFail("Should not have found data")
-        } else {
-            XCTAssertTrue(true, "If we get here, that would be a default")
-
-            // Now, I need to ensure the data we got is the right kind
-            let defaultImage = UIImage(named: "snowflake") ?? UIImage()
-            let defaultTitle = "Default Title"
-            let defaultSharedObject = SharedObject(image: defaultImage, title: defaultTitle)
-            
-            
         }
     }
 
