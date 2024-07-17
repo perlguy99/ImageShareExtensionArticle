@@ -81,9 +81,14 @@ final class ImageShareExtensionArticleTests: XCTestCase {
     
     func testGetSharedObjectFromSharedObjectManager() {
         let sut = SharedObjectManager()
-        XCTAssertNotNil(sut.getSharedObject)
+        XCTAssertNotNil(sut.getCurrentSharedObject())
     }
 
+    func isUserDefaultsEmpty() {
+        
+        
+    }
+    
     func testSharedObjectManagerCanSaveAndRetrieveData() {
         let defaultSharedObject = SharedObject(image: UIImage(named: "f35")!, title: "Default Title Xf35")
         let sut = SharedObjectManager(currentSharedObject: defaultSharedObject)
@@ -92,10 +97,10 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         XCTAssertNil(defaults.data(forKey: key))
         
         // Verify that sut contains a SharedObject
-        XCTAssertNotNil(sut.getSharedObject)
+        XCTAssertNotNil(sut.getCurrentSharedObject())
         
         // Save the object
-        sut.saveObject()
+        sut.saveSharedObject()
         
         // Verify we have data
         XCTAssertNotNil(defaults.data(forKey: key))
@@ -106,7 +111,7 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         XCTAssertNil(sut.currentSharedObject)
         
         // Load the object
-        sut.loadSavedObject()
+        sut.loadSharedObject()
         
         guard let loadedObject = sut.currentSharedObject else {
             XCTFail("No loadedObject found")
@@ -126,10 +131,7 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         XCTAssertNil(defaults.data(forKey: key))
         
         // Verify that sut contains a SharedObject
-        guard let sutSharedObject = sut.getSharedObject() else {
-            XCTFail("No sharedObject found")
-            return
-        }
+        let sutSharedObject = sut.getCurrentSharedObject()
         
         XCTAssertNotNil(sutSharedObject)
 
