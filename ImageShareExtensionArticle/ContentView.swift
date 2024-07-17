@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            CustomSharedImageView(
-                customSharedImage: CustomSharedImage(
+            SharedObjectView(
+                sharedObject: SharedObject(
                     image: UIImage(named: "f35")!,
                     title: "F-35 Title"
                 )

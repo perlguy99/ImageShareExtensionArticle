@@ -1,5 +1,5 @@
 //
-//  CustomSharedImage.swift
+//  SharedObject.swift
 //  ImageShareExtensionArticle
 //
 //  Created by Brent Michalski on 7/16/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CustomSharedImage {
+struct SharedObject {
     var image: UIImage
     var title: String
 }
 
-extension CustomSharedImage: Codable {
+extension SharedObject: Codable {
     enum CodingKeys: String, CodingKey {
         case image
         case title

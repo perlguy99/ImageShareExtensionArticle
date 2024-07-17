@@ -1,5 +1,5 @@
 //
-//  CustomSharedImageView.swift
+//  SharedObjectView.swift
 //  ImageShareExtensionArticle
 //
 //  Created by Brent Michalski on 7/16/24.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-struct CustomSharedImageView: View {
-    var customSharedImage: CustomSharedImage
+struct SharedObjectView: View {
+    var sharedObject: SharedObject
     
     var body: some View {
         VStack {
-            Image(uiImage: customSharedImage.image)
+            Image(uiImage: sharedObject.image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 250, height: 250)
                 .padding()
             
-            Text(customSharedImage.title)
+            Text(sharedObject.title)
                 .font(.headline)
                 .padding()
         }
@@ -26,11 +26,11 @@ struct CustomSharedImageView: View {
 }
 
 #Preview {
-    let testSharedImage = CustomSharedImage(
+    let testSharedObject = SharedObject(
         image: UIImage(systemName: "graduationcap.circle.fill")!,
         title: "Test Preview Image"
     )
     
-    CustomSharedImageView(customSharedImage: testSharedImage)
+    SharedObjectView(sharedObject: testSharedObject)
         .border(.gray, width: 2)
 }
