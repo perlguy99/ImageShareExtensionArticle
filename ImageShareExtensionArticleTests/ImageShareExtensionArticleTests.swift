@@ -9,42 +9,17 @@ import XCTest
 import SwiftUI
 @testable import ImageShareExtensionArticle
 
+// MARK:  "SOM" = SharedObjectManager
+
 final class ImageShareExtensionArticleTests: XCTestCase {
+    let testDefaultSharedObject = SharedObject(image: UIImage(systemName: "snowflake") ?? UIImage(), title: "Default Title X")
+    
     // Our key for userDefaults
     let key = "testSharedObject"
     let defaults = UserDefaults.standard
     
     override func setUpWithError() throws {
         defaults.removeObject(forKey: key)
-    }
-    
-
-    func testCreateSharedObject() throws {
-        let testImage = UIImage(systemName: "gear")!
-        XCTAssertNoThrow(SharedObject(image: testImage, title: "" ))
-    }
-    
-    func testSaveAndRetrieveSharedObject() {
-        // Create a SharedObject instance
-        let testImage = UIImage(systemName: "star.fill")!
-        let testTitle = "Test Image"
-        let testSharedObject = SharedObject(image: testImage, title: testTitle)
-        
-        // Save to UserDefaults
-        if let encoded = try? JSONEncoder().encode(testSharedObject) {
-            defaults.set(encoded, forKey: key)
-        }
-        
-        // Retrieve from UserDefaults
-        guard let savedData = defaults.data(forKey: key),
-              let savedSharedObject = try? JSONDecoder().decode(SharedObject.self, from: savedData) else {
-            XCTFail("Failed to retrieve SharedObject from UserDefaults")
-            return
-        }
-        
-        // Assert that the retrieved SharedObject matches the original
-        XCTAssertEqual(testSharedObject.title, savedSharedObject.title, "Titles do not match")
-        XCTAssertEqual(testSharedObject.image.pngData()?.count, savedSharedObject.image.pngData()?.count, "Images do no match")
     }
     
     func testGetSavedObjectOrDefaultObject_expectDefault() {
@@ -83,61 +58,37 @@ final class ImageShareExtensionArticleTests: XCTestCase {
         let sut = SharedObjectManager()
         XCTAssertNotNil(sut.getCurrentSharedObject())
     }
-
-    func isUserDefaultsEmpty() {
-        
-        
-    }
     
-    func testSharedObjectManagerCanSaveAndRetrieveData() {
-        let defaultSharedObject = SharedObject(image: UIImage(named: "f35")!, title: "Default Title Xf35")
-        let sut = SharedObjectManager(currentSharedObject: defaultSharedObject)
+    func testSOM_Init_noData_expectDefault() {
+        let sut = SharedObjectManager()
+        let testObject = sut.getCurrentSharedObject()
         
-        // Verify no data yet
-        XCTAssertNil(defaults.data(forKey: key))
-        
-        // Verify that sut contains a SharedObject
-        XCTAssertNotNil(sut.getCurrentSharedObject())
-        
-        // Save the object
-        sut.saveSharedObject()
-        
-        // Verify we have data
-        XCTAssertNotNil(defaults.data(forKey: key))
-        
-        // Clear the currentSharedObject from the sut
-        sut.currentSharedObject = nil
-        
-        XCTAssertNil(sut.currentSharedObject)
-        
-        // Load the object
-        sut.loadSharedObject()
-        
-        guard let loadedObject = sut.currentSharedObject else {
-            XCTFail("No loadedObject found")
-            return
-        }
-        
-        // Verify we get the correct data...
-        XCTAssertEqual(loadedObject.title, defaultSharedObject.title)
-        XCTAssertEqual(loadedObject.image.pngData()?.count, defaultSharedObject.image.pngData()?.count, "Images do no match")
+        XCTAssertEqual(testObject.title, "Default Title X")
+        XCTAssertEqual(testObject.image.pngData()?.count, testDefaultSharedObject.image.pngData()?.count)
     }
 
-    func testSharedObjectManagerReturnsDefaultIfNoSaved() {
-        let defaultSharedObject = SharedObject(image: UIImage(systemName: "snowflake")!, title: "Default Title X")
+    func testSOM_Init_WithData_expectData() {
+        let expectedObject = SharedObject(image: UIImage(named: "f35") ?? UIImage(), title: "Expected F35")
+        
         let sut = SharedObjectManager()
+        sut.setCurrentSharedObject(sharedObject: expectedObject)
         
-        // Verify no data yet
-        XCTAssertNil(defaults.data(forKey: key))
+        let testObject = sut.getCurrentSharedObject()
         
-        // Verify that sut contains a SharedObject
-        let sutSharedObject = sut.getCurrentSharedObject()
-        
-        XCTAssertNotNil(sutSharedObject)
+        XCTAssertEqual(testObject.title, expectedObject.title)
+        XCTAssertEqual(testObject.image.pngData()?.count, expectedObject.image.pngData()?.count)
+    }
 
-        // Verify we get the correct data...
-        XCTAssertEqual(sutSharedObject.title, defaultSharedObject.title)
-        XCTAssertEqual(sutSharedObject.image.pngData()?.count, defaultSharedObject.image.pngData()?.count, "Images do no match")
+    func testSOM_FetchSharedObjectFromDataStore() {
+        let expectedObject = SharedObject(image: UIImage(named: "f35") ?? UIImage(), title: "Expected F35")
+        
+        let sut = SharedObjectManager()
+        sut.setCurrentSharedObject(sharedObject: expectedObject)
+        
+        let testObject = sut.fetchSharedObjectFromDataStore()
+        
+        XCTAssertEqual(testObject?.title, expectedObject.title)
+        XCTAssertEqual(testObject?.image.pngData()?.count, expectedObject.image.pngData()?.count)
     }
     
 
