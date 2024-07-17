@@ -46,8 +46,6 @@ class SharedObjectManager {
         }
     }
     
-
-    
     func loadSharedObject() {
         // Retrieve from UserDefaults
         guard let savedData = defaults.data(forKey: key),
