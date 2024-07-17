@@ -76,10 +76,10 @@ final class ImageShareExtensionArticleTests: XCTestCase {
 
     func testGetSavedObjectOrDefaultObject_expectSaved() {
         // Create a SharedObject instance
-        let originalSharedObject = SharedObject(image: UIImage(systemName: "star.fill")!, title: "Test Image")
+        let testSharedObject = SharedObject(image: UIImage(systemName: "star.fill")!, title: "Test Image")
         
         // Save to UserDefaults
-        if let encoded = try? JSONEncoder().encode(originalSharedObject) {
+        if let encoded = try? JSONEncoder().encode(testSharedObject) {
             defaults.set(encoded, forKey: key)
         }
 
@@ -91,6 +91,27 @@ final class ImageShareExtensionArticleTests: XCTestCase {
             XCTFail("Should not have gottem the default")
         }
     }
+    
+    func testCreateSharedObjectManager() {
+        XCTAssertNoThrow(SharedObjectManager())
+    }
+    
+    func testGetSharedObjectFromSharedObjectManager() {
+        let sut = SharedObjectManager()
+        XCTAssertNotNil(sut.getSharedObject)
+    }
+
+    func testSharedObjectManagerCanSaveAndRetrieveData() {
+        let defaultSharedObject = SharedObject(image: UIImage(named: "f35")!, title: "Default Title Xf35")
+        let sut = SharedObjectManager(currentSharedObject: defaultSharedObject)
+        
+        // Verify no data yet
+        XCTAssertNil(defaults.data(forKey: key))
+        
+        XCTAssertNotNil(sut.getSharedObject)
+    }
+
+    
 
 }
 
