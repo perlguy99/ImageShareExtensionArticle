@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct SharedObjectView: View {
-    var sharedObject: SharedObject
+    let som = SharedObjectManager()
     
     var body: some View {
         VStack {
-            Image(uiImage: sharedObject.image)
+            Image(uiImage: som.getCurrentSharedObject().image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 250, height: 250)
                 .padding()
             
-            Text(sharedObject.title)
+            Text(som.getCurrentSharedObject().title)
                 .font(.headline)
                 .padding()
         }
@@ -26,11 +26,13 @@ struct SharedObjectView: View {
 }
 
 #Preview {
+    let som = SharedObjectManager()
+    
     let testSharedObject = SharedObject(
         image: UIImage(systemName: "graduationcap.circle.fill")!,
         title: "Test Preview Image"
     )
     
-    SharedObjectView(sharedObject: testSharedObject)
+    SharedObjectView()
         .border(.gray, width: 2)
 }

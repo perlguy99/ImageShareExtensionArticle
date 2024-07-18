@@ -7,15 +7,15 @@
 
 import SwiftUI
 
+//sharedObject: SharedObject(
+//    image: UIImage(named: "f35")!,
+//    title: "F-35 Title"
+//)
+
 struct ContentView: View {
     var body: some View {
         VStack {
-            SharedObjectView(
-                sharedObject: SharedObject(
-                    image: UIImage(named: "f35")!,
-                    title: "F-35 Title"
-                )
-            )
+            SharedObjectView()
             .border(.gray, width: 2)
         }
         .padding()
