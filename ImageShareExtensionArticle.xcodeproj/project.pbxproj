@@ -6,6 +6,10 @@
 	objectVersion = 70;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		841031472C49A0D700ECFD09 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 841031462C49A0D700ECFD09 /* ViewInspector */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		84C88BD92C3F19B300384CBC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841031472C49A0D700ECFD09 /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +112,7 @@
 			);
 			name = ImageShareExtensionArticleTests;
 			packageProductDependencies = (
+				841031462C49A0D700ECFD09 /* ViewInspector */,
 			);
 			productName = ImageShareExtensionArticleTests;
 			productReference = 84C88BD82C3F19B300384CBC /* ImageShareExtensionArticleTests.xctest */;
@@ -140,6 +146,9 @@
 				Base,
 			);
 			mainGroup = 84C88BBF2C3F19B000384CBC;
+			packageReferences = (
+				841031452C49A0D700ECFD09 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = 84C88BC92C3F19B000384CBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,6 +448,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		841031452C49A0D700ECFD09 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				branch = 0.10.0;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		841031462C49A0D700ECFD09 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 841031452C49A0D700ECFD09 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84C88BC02C3F19B000384CBC /* Project object */;
 }
