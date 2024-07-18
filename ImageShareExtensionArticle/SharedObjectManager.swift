@@ -16,22 +16,20 @@ class SharedObjectManager {
     var currentSharedObject: SharedObject?
     
     init() {
-        if let savedObject = fetchSharedObjectFromDataStore() {
-            currentSharedObject = savedObject
-        }
+        loadSharedObject()
     }
     
     func fetchSharedObjectFromDataStore() -> SharedObject? {
-        if let savedData = defaults.data(forKey: key) {
-            if let savedSharedObject = try? JSONDecoder().decode(SharedObject.self, from: savedData) {
-                return savedSharedObject
-            }
+        guard let savedData = defaults.data(forKey: key),
+              let savedSharedObject = try? JSONDecoder().decode(SharedObject.self, from: savedData) else {
+            return nil
         }
-        return nil
+        
+        return savedSharedObject
     }
     
     func getCurrentSharedObject() -> SharedObject {
-        return fetchSharedObjectFromDataStore() ?? defaultSharedObject
+        return currentSharedObject ?? defaultSharedObject
     }
     
     func setCurrentSharedObject(sharedObject: SharedObject) {
@@ -40,21 +38,11 @@ class SharedObjectManager {
     }
     
     func saveSharedObject() {
-        // Save to UserDefaults
-        if let encoded = try? JSONEncoder().encode(currentSharedObject) {
-            defaults.set(encoded, forKey: key)
-        }
+        guard let encoded = try? JSONEncoder().encode(currentSharedObject) else { return }
+        defaults.set(encoded, forKey: key)
     }
     
     func loadSharedObject() {
-        // Retrieve from UserDefaults
-        guard let savedData = defaults.data(forKey: key),
-              let savedSharedObject = try? JSONDecoder().decode(
-                SharedObject.self, from: savedData
-              ) else {
-            return
-        }
-
-        currentSharedObject = savedSharedObject
+        currentSharedObject = fetchSharedObjectFromDataStore() ?? defaultSharedObject
     }
 }
