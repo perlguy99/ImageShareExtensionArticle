@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct SharedObjectView: View {
+struct SharedObjectView: TestableView {
+    var viewInspectorHook: ((Self) -> Void)?  // Added for ViewInspector
+    
     let som = SharedObjectManager()
     
     var body: some View {
@@ -22,6 +24,7 @@ struct SharedObjectView: View {
                 .font(.headline)
                 .padding()
         }
+        .onAppear { self.viewInspectorHook?(self) } // Added for ViewInspector
     }
 }
 
