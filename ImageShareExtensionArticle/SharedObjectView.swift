@@ -23,6 +23,13 @@ struct SharedObjectView: TestableView {
             Text(som.getCurrentSharedObject().title)
                 .font(.headline)
                 .padding()
+            
+            Button {
+                // Button action here
+            } label: {
+                Text("Test Button")
+            }
+            .id("testButton")
         }
         .onAppear { self.viewInspectorHook?(self) } // Added for ViewInspector
     }
