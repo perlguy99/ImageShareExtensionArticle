@@ -18,4 +18,17 @@ final class SharedObjectViewTests: XCTestCase {
             XCTAssertNotNil(button)
         }
     }
+    
+    func test_viewCanBeChanged() throws {
+        let sharedObjMgr = SharedObjectManager()
+        let view = SharedObjectView(sharedObjMgr: sharedObjMgr)
+        
+        view.sharedObjMgr.setCurrentSharedObject(sharedObject: SharedObject(image: UIImage(systemName: "gear") ?? UIImage(), title: "FIRST"))
+        print(view.sharedObjMgr.getCurrentSharedObject().title)
+        
+        view.sharedObjMgr.setCurrentSharedObject(sharedObject: SharedObject(image: UIImage(systemName: "gear") ?? UIImage(), title: "SECOND"))
+        print(view.sharedObjMgr.getCurrentSharedObject().title)
+        
+        
+    }
 }

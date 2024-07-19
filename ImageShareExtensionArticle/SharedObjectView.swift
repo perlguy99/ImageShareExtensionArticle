@@ -10,17 +10,17 @@ import SwiftUI
 struct SharedObjectView: TestableView {
     var viewInspectorHook: ((Self) -> Void)?  // Added for ViewInspector
     
-    let som = SharedObjectManager()
+    var sharedObjMgr: SharedObjectManager = SharedObjectManager()
     
     var body: some View {
         VStack {
-            Image(uiImage: som.getCurrentSharedObject().image)
+            Image(uiImage: sharedObjMgr.getCurrentSharedObject().image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 250, height: 250)
                 .padding()
             
-            Text(som.getCurrentSharedObject().title)
+            Text(sharedObjMgr.getCurrentSharedObject().title)
                 .font(.headline)
                 .padding()
             
@@ -35,14 +35,23 @@ struct SharedObjectView: TestableView {
     }
 }
 
-#Preview {
-    let som = SharedObjectManager()
-    
-    let testSharedObject = SharedObject(
-        image: UIImage(systemName: "graduationcap.circle.fill")!,
-        title: "Test Preview Image"
-    )
-    
-    SharedObjectView()
-        .border(.gray, width: 2)
-}
+//#Preview {
+//    var sharedObjMgr = SharedObjectManager()
+//    
+//    var testSharedObject = SharedObject(
+//        image: UIImage(systemName: "graduationcap.circle.fill")!,
+//        title: "Test Preview Image"
+//    )
+//    
+//    sharedObjMgr.setCurrentSharedObject(sharedObject: SharedObject(
+//        image: UIImage(systemName: "gear")!,
+//        title: "Hmmm")
+//    )
+//    
+////    sharedObjMgr.setCurrentSharedObject(sharedObject: testSharedObject)
+//    
+////    sharedObjMgr.setCurrentSharedObject(sharedObject: testSharedObject)
+//    
+//    SharedObjectView(sharedObjMgr: sharedObjMgr)
+//        .border(.gray, width: 2)
+//}

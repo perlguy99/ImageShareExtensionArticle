@@ -13,9 +13,11 @@ import SwiftUI
 //)
 
 struct ContentView: View {
+    var sharedObjMgr = SharedObjectManager()
+    
     var body: some View {
         VStack {
-            SharedObjectView()
+            SharedObjectView(sharedObjMgr: sharedObjMgr)
             .border(.gray, width: 2)
         }
         .padding()
